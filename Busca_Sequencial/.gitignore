@@ -1,0 +1,15 @@
+# --- Pastas de Compilação (Obrigatório) ---
+bin/
+obj/
+
+# --- IDE ---
+.vscode/
+
+# --- Arquivos Binários ---
+*.exe
+*.dll
+*.o
+*.out
+/programa    # O '/' garante que ignore o executável na raiz
+
+# NOTA: Removi o .csproj daqui para ele ser salvo no Git!

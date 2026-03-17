@@ -22,7 +22,7 @@ int Busca_Sequencial_c_Sentinela(int valor, int *v, int tamanho)
 {
     v[tamanho] = valor;
     int i;
-    for(i = 0; i < tamanho && v[i] != valor; i++);
+    for(i = 0;v[i] != valor; i++);
 
     if(i == tamanho)
     {
