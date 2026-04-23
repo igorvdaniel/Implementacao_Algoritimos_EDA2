@@ -62,6 +62,25 @@ void bubble_sort(int *v, int tamanho)
     }
 }
 
+void shell_sort(int *v, int tamanho)
+{
+    for(int gap = tamanho/2; gap > 0; gap /= 2)
+    {
+        for(int i = gap; i < tamanho; i ++)
+        {
+            int temp = v[i];
+            int j;
+
+            for (j = i; j >= gap && v[j - gap] > temp; j -= gap) 
+            {
+                v[j] = v[j - gap];
+            }
+
+            v[j] = temp;
+        }
+    }
+}
+
 int main()
 {
     clock_t inicio, fim;
@@ -125,6 +144,24 @@ int main()
     printf("Tempo total para %d execucoes: %lf segundos\n", EXECUCOES, ((double) (fim - inicio)) / CLOCKS_PER_SEC);
 
     printf("Vetor ordenado pelo bubble sort: ");
+    for(int i = 0; i < n; i++) printf("%d ", vetor[i]);
+    printf("\n");
+
+    printf("\n");
+
+    inicio = clock();
+
+    for(int i = 0; i < EXECUCOES; i++)
+    {
+        memcpy(vetor, v, n * sizeof(int));
+        shell_sort(vetor, n);
+    }
+
+    fim = clock();
+
+    printf("Tempo total para %d execucoes: %lf segundos\n", EXECUCOES, ((double) (fim - inicio)) / CLOCKS_PER_SEC);
+
+    printf("Vetor ordenado pelo shell sort: ");
     for(int i = 0; i < n; i++) printf("%d ", vetor[i]);
     printf("\n");
 
